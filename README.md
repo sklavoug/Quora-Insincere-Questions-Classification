@@ -95,3 +95,33 @@ The final output of the model with the top parameters from Table 3 was 0.536. No
 ### 4.2 - Detailed Output
 #### Figure 2: Probability values for most impactful features in determining insincerity
 <img src="https://github.com/sklavoug/Quora-Insincere-Questions-Classification/blob/main/4.2-1.png" alt="Figure showing high probability values for words like 'the', 'what', 'How', and 'in' for the Sincere subset, and higher values for 'Why', 'people', 'they', and 'and' in the Insincere subset" width="1000"/>
+
+A detailed analysis of the results shows that different features have definitely impacted the model’s classification, however, these effects may have been small given how little the probability differences for some features is. Figure 2 shows the most impactful words in deciding that a document is insincere from the MNB classifier (i.e., the words with the highest probability of appearing in an insincere document). As noted in Table 1, a number of preprocessing steps were considered including stopword removal, however, removing the stopwords actually led to a slight increase in recall and a considerable decrease in precision, leading to a lower F1 score overall. This detailed analysis may suggest reasons why, as common stopwords (such as ‘the’, ‘to’, ‘and’, ‘of’) seem to have very little impact since their probabilities of appearing in insincere documents is roughly the same as them appearing in sincere documents.
+
+#### Figure 3: Absolute difference in probability for sincere vs insincere class
+<img src="https://github.com/sklavoug/Quora-Insincere-Questions-Classification/blob/main/4.2-2.png" alt="Figure showing absolute difference for 'What', 'Why', 'How', 'in', and 'is'" width="1000"/>
+
+The detailed analysis also provides a potential explanation for why converting the text to lowercase reduced its F1 score. Figure 3 shows the two biggest differences between sincere and insincere probabilities in the dataset above are for ‘What’ (favours sincere, +0.01664) and ‘Why’ (favours insincere, +0.02481). The fact that these words are capitalised, and that their non-capitalised counterparts do not appear on the top list, suggests that they are appearing commonly at the start of a sentence or, more likely, as the first word in the question. Interestingly, this suggests that ‘Why’ questions are more likely to be insincere and ‘What’ questions are more likely to be sincere.
+
+### 4.3 - Potential Improvement
+There are several potential improvements and expansions to the model which could be implemented. The first is to use ![BERT](https://arxiv.org/abs/1810.04805) (Bidirectional Encoder Representations from Transformers), a language representation model developed by Google whose notable features include being pre- trained on an existing corpus of text and determining probability not just for features themselves, but features with multiple meanings (e.g., ‘mean’ as in intended, and ‘mean’ as in average). As well, I’d like to try and implement a neural network to compare deep learning techniques against the more linear models applied in this project.
+
+Another potential improvement would be to consider work already conducted on unintended bias in toxic comment classification, most notably the jigsaw ![Kaggle competition](https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/data) and ![Google paper](https://arxiv.org/pdf/1903.04561.pdf) relating to Area Under the Receiver Operating Characteristic Curve (ROC-AUC), which may significantly improve the model’s recall as it would offset the probability of words which appear frequently in toxic comments but could influence classification of non-toxic comments (e.g., the phrase ‘I am trans’ may not be toxic but will likely be labelled as such due to the appearance of the word ‘trans’, which would presumably appear often in toxic comments and lead to unintended bias).
+
+## 5. References
+Borkan et al., ‘Nuanced Metrics for Measuring Unintended Bias with Real Data for Text Classification’, https://arxiv.org/pdf/1903.04561.pdf
+
+Devlin et al., (2018) ‘BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding’, https://arxiv.org/abs/1810.04805
+
+Graham, P., ‘stopwords-json’, Github repo, https://github.com/6/stopwords- json/blob/master/dist/en.json
+
+Kaggle, ‘Jigsaw Unintended Bias in Toxicity Classification’, https://www.kaggle.com/c/jigsaw- unintended-bias-in-toxicity-classification/overview
+
+Kaggle, ‘Quora Insincere Questions Classification’, https://www.kaggle.com/c/quora-insincere- questions-classification/overview
+
+Sklearn, ‘Nested versus non-nested cross-validation’, https://scikit- learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html
+
+Tan, L., ‘Basic NLP with NLTK’, Python notebook, https://www.kaggle.com/alvations/basic-nlp-with- nltk
+
+Wang, S., and Manning, C.D., ‘Baselines and Bigrams: Simple, Good Sentiment and Topic Classification’, https://nlp.stanford.edu/pubs/sidaw12_simple_sentiment.pdf
+
