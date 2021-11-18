@@ -4,24 +4,17 @@
 Based on the ![Kaggle competition](https://www.kaggle.com/c/quora-insincere-questions-classification), classifies the sincerity of Quora questions using F1 score and a Multinomial Naive Bayes model, with a final F1 score around 0.536.
 
 ### PYTHON FILES
-- analysis.py contains the analysis for 2. Implementation, particularly the generation of the graph showing most common words in the insincere dataset and their frequency in the sincere dataset.
-
-- preprocessing.py includes the preprocessing steps which were experimented with but ultimately not used, as the model's performance actually improved with no preprocessing whatsoever.
-
-- validation.py contains the nested cross-validations for the three models. The cross-validation's verbosity is set to the highest value, and the output in the console was converted to data and scores averaged/interrogated for the tables in part 3.
-
-- Model is stored in the 'model.py' file. As it doesn't take very long to train and test, no outputs have been cached. Results are stored in 'results.csv' with 'target' being the target value and 'predicted' being the model's output on the test set. Resulting features in the model along with their probabilities for each class are stored in 'features.csv'.
-
-- detailed_output.py uses the output of the model to analyse the results and determine factors influencing the model's classification.
+- **analysis.py** contains the analysis for 2. Implementation, particularly the generation of the graph showing most common words in the insincere dataset and their frequency in the sincere dataset.
+- **preprocessing.py** includes the preprocessing steps which were experimented with but ultimately not used, as the model's performance actually improved with no preprocessing whatsoever.
+- **validation.py** contains the nested cross-validations for the three models. The cross-validation's verbosity is set to the highest value, and the output in the console was converted to data and scores averaged/interrogated for the tables in part 3.
+- Model is stored in the **model.py** file. As it doesn't take very long to train and test, no outputs have been cached. Results are stored in 'results.csv' with 'target' being the target value and 'predicted' being the model's output on the test set. Resulting features in the model along with their probabilities for each class are stored in 'features.csv'.
+- **detailed_output.py** uses the output of the model to analyse the results and determine factors influencing the model's classification.
 
 ### CSV FILES (not included)
-- train.csv should contain the dataset from Kaggle.
-
-- stopwords.csv should contain expanded stopword list from stopwords-json, used in preprocessing.py
-
-- features.csv should contain features used by the model and probabilities associated with each feature for each class.
-
-- results.csv should contain model's predictions and true values for the test set.
+- **train.csv** should contain the dataset from Kaggle.
+- **stopwords.csv** should contain expanded stopword list from stopwords-json, used in preprocessing.py
+- **features.csv** should contain features used by the model and probabilities associated with each feature for each class.
+- **results.csv** should contain model's predictions and true values for the test set.
 
 ## 1. Introduction
 ‘Sincerity’ is an interesting measure. Unlike ‘toxic’ comments or questions – which can largely be identified through the use of particular words, often in reference to minority groups – ‘sincerity’ seems to be a more difficult concept to measure. Much like a rhetorical question, it’s less about the use of particular words and more about context and a human-like cognitive understanding of when a question is asking for information and when it is simply being asked for the sake of division or inflammation. With this in mind, I was drawn to the Kaggle Quora Insincere Questions Classification competition, whose goal is to determine whether a question is ‘sincere’ or not using a dataset of roughly 1.3 million questions from Quora. Despite the fact that this project involves simple binary classification (insincere or sincere), the top leaderboard F1 score was only around 0.7, meaning the task itself was quite challenging.
