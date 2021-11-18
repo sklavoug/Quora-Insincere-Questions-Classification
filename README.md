@@ -1,5 +1,10 @@
 # Quora-Insincere-Questions-Classification
 
+## 0. Executive Summary
 Based on the ![Kaggle competition](https://www.kaggle.com/c/quora-insincere-questions-classification), classifies the sincerity of Quora questions using F1 score and a Multinomial Naive Bayes model, with a final F1 score around 0.536.
 
-An explanation is also provided which outlines approach taken, cross-validation methodology and some analysis on the final results and potential improvements.
+## 1. Introduction
+‘Sincerity’ is an interesting measure. Unlike ‘toxic’ comments or questions – which can largely be identified through the use of particular words, often in reference to minority groups – ‘sincerity’ seems to be a more difficult concept to measure. Much like a rhetorical question, it’s less about the use of particular words and more about context and a human-like cognitive understanding of when a question is asking for information and when it is simply being asked for the sake of division or inflammation. With this in mind, I was drawn to the Kaggle Quora Insincere Questions Classification competition, whose goal is to determine whether a question is ‘sincere’ or not using a dataset of roughly 1.3 million questions from Quora. Despite the fact that this project involves simple binary classification (insincere or sincere), the top leaderboard F1 score was only around 0.7, meaning the task itself was quite challenging.
+
+To solve the problem I utilised nested cross-validation to determine both the most appropriate model and the best hyperparameters for each model. I also included a number of preprocessing techniques and steps in both sklearn’s native library and manual application, however, interestingly the highest-scoring model utilised no preprocessing whatsoever although this did involve a trade-off between precision and recall (for the total F1 score). In addition, I was curious about the nature of an ‘insincere’ question as opposed to a ‘toxic’ question and did perform some rudimentary analysis to better understand the dataset, with the results of this analysis being available in the
+‘Implementation’ section of this report. I also analysed the final output of the model (outside the scope of testing) to better understand why it generated false positives and false negatives to improve performance of similar models in the future.
