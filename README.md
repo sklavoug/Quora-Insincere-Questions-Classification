@@ -113,15 +113,92 @@ Borkan et al., ‘Nuanced Metrics for Measuring Unintended Bias with Real Data f
 
 Devlin et al., (2018) ‘BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding’, https://arxiv.org/abs/1810.04805
 
-Graham, P., ‘stopwords-json’, Github repo, https://github.com/6/stopwords- json/blob/master/dist/en.json
+Graham, P., ‘stopwords-json’, Github repo, https://github.com/6/stopwords-json/blob/master/dist/en.json
 
-Kaggle, ‘Jigsaw Unintended Bias in Toxicity Classification’, https://www.kaggle.com/c/jigsaw- unintended-bias-in-toxicity-classification/overview
+Kaggle, ‘Jigsaw Unintended Bias in Toxicity Classification’, https://www.kaggle.com/c/jigsaw-unintended-bias-in-toxicity-classification/overview
 
-Kaggle, ‘Quora Insincere Questions Classification’, https://www.kaggle.com/c/quora-insincere- questions-classification/overview
+Kaggle, ‘Quora Insincere Questions Classification’, https://www.kaggle.com/c/quora-insincere-questions-classification/overview
 
 Sklearn, ‘Nested versus non-nested cross-validation’, https://scikit- learn.org/stable/auto_examples/model_selection/plot_nested_cross_validation_iris.html
 
-Tan, L., ‘Basic NLP with NLTK’, Python notebook, https://www.kaggle.com/alvations/basic-nlp-with- nltk
+Tan, L., ‘Basic NLP with NLTK’, Python notebook, https://www.kaggle.com/alvations/basic-nlp-with-nltk
 
 Wang, S., and Manning, C.D., ‘Baselines and Bigrams: Simple, Good Sentiment and Topic Classification’, https://nlp.stanford.edu/pubs/sidaw12_simple_sentiment.pdf
 
+## 6. Appendix
+<table>
+    <thead>
+        <tr>
+            <th>Function / Algorithm</th>
+            <th>Description</th>
+            <th>Hyperparameter</th>
+            <th>Description</th>
+            <th>Values Cross-Validated</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan=4>CountVectorizer</td>
+            <td rowspan=4>Performs vectorisation on text data, i.e., converts words (or n-grams) in text to vectors with each word represented by a column and each document a row.</td>
+            <td>max_df</td>
+            <td>A kind of stopword removal, removes words which appear in the corpus more often than the decimal value.</td>
+            <td>0.5, 0.75, 1.0</td>
+        </tr>
+        <tr>
+            <td>max_features</td>
+            <td>Only considers the top x words based on frequency.</td>
+            <td>None, 5000, 10,000, 50,000</td>
+        </tr>
+        <tr>
+          <td>ngram_range</td>
+          <td>Number of words to tokenise together.</td>
+          <td>Unigram and bigram.</td>
+        </tr>
+        <tr>
+          <td>lowercase</td>
+          <td>Convert characters to lowercase.</td>
+          <td>True, False</td>
+        </tr>
+        <tr>
+            <td>Multinomial Naive Bayes</td>
+            <td>Utilises the Naive Bayes formula to determine class probabilities based on frequency of appearance of words in a document.</td>
+            <td>alpha</td>
+            <td>Smoothing parameter, used to prevent situations where a word not appearing will generate a probability of zero.</td>
+            <td>0.0001, 0.001, 0.01, 0.1</td>
+        </tr>
+        <tr>
+            <td rowspan=3>Support-Vector Machine</td>
+            <td rowspan=3>Performs Linear classification by maximising the margin (i.e., the difference) between the two classes.</td>
+            <td>C</td>
+            <td>Regularisation parameter, with strength of regularisation being inversely proportional to C.</td>
+            <td>0.0001, 0.001, 0.01, 0.1</td>
+        </tr>
+        <tr>
+          <td>class_weight</td>
+          <td>Used for imbalanced classes to scale weightings.</td>
+          <td>balanced, None</td>
+        </tr>
+        <tr>
+          <td>max_iter</td>
+          <td>Maximum number of iterations.</td>
+          <td>10, 50, 80</td>
+        </tr>
+        <tr>
+            <td rowspan=3>Logistic Regression</td>
+            <td rowspan=3>Performs regression to determine the probability that a document is of a particular class (i.e., the range from 0 to 1 are the real values it plots).</td>
+            <td>C</td>
+            <td>Regularisation parameter, with strength of regularisation being inversely proportional to C.</td>
+            <td>0.0001, 0.001, 0.01, 0.1</td>
+        </tr>
+        <tr>
+          <td>class_weight</td>
+          <td>Used for imbalanced classes to scale weightings.</td>
+          <td>balanced, None</td>
+        </tr>
+        <tr>
+          <td>penalty</td>
+          <td>Norm used in penalisation.</td>
+          <td>l1, l2</td>
+        </tr>
+    </tbody>
+</table>
