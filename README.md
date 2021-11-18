@@ -41,3 +41,8 @@ The final two aspects are stopwords and n-grams, both of which occur after the w
 Finally, n-grams are essentially phrases of length n extracted from the text, e.g., 1-grams are unigrams and represent one word, 2-grams are bigrams and represent two words, etc. These words are extracted from the documents and can be important in determining intent or toxicity, e.g., the words ‘trump’ and ‘sucks’ in isolation could lead the classifier to classify the comment as toxic, however, the combined ‘trump sucks’ may be far less common in toxic comments but more common in non-toxic comments, which would change the classification.
 
 My hypothesis, based on the small amount of NLP work I’ve done in the past, was that each of these would improve the model in some way by reducing the overall pool of words it would have to recognise and enriching the data for each document. Interestingly the opposite seemed to be true – removing standardisation, stemming, and stopword removal actually improved the model’s performance, in some cases significantly.
+
+|           | All Removed | Lower + Stop | Lower | Stop | Lower + Stop + Stem |
+| F1        | 
+| Precision |
+| Recall    |
