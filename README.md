@@ -43,6 +43,7 @@ Finally, n-grams are essentially phrases of length n extracted from the text, e.
 My hypothesis, based on the small amount of NLP work I’ve done in the past, was that each of these would improve the model in some way by reducing the overall pool of words it would have to recognise and enriching the data for each document. Interestingly the opposite seemed to be true – removing standardisation, stemming, and stopword removal actually improved the model’s performance, in some cases significantly.
 
 |           | All Removed | Lower + Stop | Lower | Stop | Lower + Stop + Stem |
+| --------- | ----------- | ------------ | ----- | ---- | ------------------- |
 | F1        | 
 | Precision |
 | Recall    |
