@@ -44,6 +44,6 @@ My hypothesis, based on the small amount of NLP work I’ve done in the past, wa
 
 |           | All Removed | Lower + Stop | Lower | Stop | Lower + Stop + Stem |
 | --------- | ----------- | ------------ | ----- | ---- | ------------------- |
-| F1        | 
+| F1        | **0.5629**  | 0.5472       | 0.5574 | 0.5441 | 0.5531 |
 | Precision |
 | Recall    |
