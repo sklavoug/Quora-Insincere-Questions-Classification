@@ -18,7 +18,7 @@ At a high level, the dataset contains 1,302,122 questions, with sincere question
 At the outset, my hypothesis was that unlike a toxic question, an 'insincere' question is harder to spot likely because it contains fewer of the same terms. Interestingly this seemed to be incorrect: traditional toxic dogwhistles including racist and sexist language appear relatively frequently in this dataset, with, for example, the word 'trump' appearing in 7.6% of all insincere samples but only 0.6% of all sincere samples. Figure 1 (next page) shows that the majority of the 40 most common words in the insincere dataset (with some stopwords removed) appear far more frequently in the insincere than the sincere dataset, with notable exceptions being for words that don’t necessarily have negative connotations in isolation (e.g., one, cant, feel, know, get). This made me very curious as to how the model would perform, as there would likely be some issues when some terms appear much more frequently in one class than another.
 
 <img src="https://github.com/sklavoug/Quora-Insincere-Questions-Classification/blob/main/2.1.png" alt="Figure 1: 40 most frequent words in insincere dataset as a proportion of insincere and sincere datasets" width="1000"/>
-Figure 1: 40 most frequent words in insincere dataset as a proportion of insincere and sincere datasets
+*Figure 1: 40 most frequent words in insincere dataset as a proportion of insincere and sincere datasets*
 
 ### 2.2 - Scoring
 The scoring metric for this challenge was F1 score, which is the harmonic mean of precision (TP / (TP + FP)) and recall (TP / (TP + FN)). This is an appropriate measure for an NLP task relating to toxicity, as the precision will punish a model which is too assertive and uses a particular batch of words which appear commonly in toxic comments to make its decision, while the recall will punish a model which is too conservative in its judgements, incorrectly labelling true values as false. Given how many words appeared frequently in the insincere class but infrequently in the sincere class, I suspected any classification model would perform better on recall than precision, as it would be much more likely to incorrectly label a sincere example as insincere because it contained a certain word (e.g., ‘trump’) than to incorrectly label an insincere example as sincere for not containing words.
@@ -42,8 +42,8 @@ Finally, n-grams are essentially phrases of length n extracted from the text, e.
 
 My hypothesis, based on the small amount of NLP work I’ve done in the past, was that each of these would improve the model in some way by reducing the overall pool of words it would have to recognise and enriching the data for each document. Interestingly the opposite seemed to be true – removing standardisation, stemming, and stopword removal actually improved the model’s performance, in some cases significantly.
 
-|           | All Removed | Lower + Stop | Lower | Stop | Lower + Stop + Stem |
-| --------- | ----------- | ------------ | ----- | ---- | ------------------- |
-| F1        | **0.5629**  | 0.5472       | 0.5574 | 0.5441 | 0.5531 |
-| Precision |
-| Recall    |
+|           | All Removed  | Lower + Stop  | Lower      | Stop   | Lower + Stop + Stem  |
+| --------- | -----------: | ------------: | ---------: | ------:| -------------------: |
+| F1        | **0.5629**   | 0.5472        | 0.5574     | 0.5441 | 0.5531               |
+| Precision | 0.4776       | **0.491**     | 0.4665     | 0.4887 | 0.4727               |
+| Recall    | 0.6854       | 0.618         | **0.6925** | 0.6138 | 0.6664               |
