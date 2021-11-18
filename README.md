@@ -74,7 +74,6 @@ Notably, a term-frequency times inverse document-frequency (tfidf) transformer w
 Within the MNB cross-validation, some interesting trends emerged. Table 3 shows that the highest- scoring iterations used a max_df near the max (either 0.75 or 1), consistently did not use lowercase, and had a relatively high alpha value (0.1 or 0.01), while the lowest-performing models had 0.5 max_df, used lowercase, and used the lowest alpha value (0.0001).
 
 #### Table 3: Hyperparameters and Resulting F1 Score for MNB Model
-**CountVectorizer**                     **MNB**
 | Ngram | Max_feat | Max_df | Lowercase | Alpha | F1     |
 | :---- | -------: | -----: | --------: | ----: | -----: |
 | (1,1) | 50,000   | 0.75   | FALSE     | 0.1   | 0.556  |
@@ -89,5 +88,10 @@ Within the MNB cross-validation, some interesting trends emerged. Table 3 shows 
 | (1,2) | None     | 0.5    | TRUE      | 0.0001| 0.48   |
 | (1,2) | None     | 0.5    | TRUE      | 0.0001| 0.481  |
 
+## 4. Results
+### 4.1 - Output
+The final output of the model with the top parameters from Table 3 was 0.536. Notably the model’s recall value was higher than any of the preprocessing test cases (Table 1) at 0.765, however, its precision was also much lower than any of the test cases, at 0.413. This is not a particularly good result, as it essentially means the model performed correctly about half the time, however, as noted in the introduction, the top score on the Kaggle leaderboards was around 70, indicating this is a challenging exercise to begin with. What follows is an analysis of the test set’s output and true values to better understand why the model performed the way it did, noting that any insights gleaned from this exercise would mostly be for personal education rather than further tuning of the model’s parameters or hyperparameters (as doing so would be the exact kind of information ‘leakage’ prevented by nested cross-validation, and would realistically most likely result in overfitting on the test set thus hindering the model’s generalisability).
 
-
+### 4.2 - Detailed Output
+#### Figure 2: Probability values for most impactful features in determining insincerity
+<img src="https://github.com/sklavoug/Quora-Insincere-Questions-Classification/blob/main/4.2-1.png" alt="Figure showing high probability values for words like 'the', 'what', 'How', and 'in' for the Sincere subset, and higher values for 'Why', 'people', 'they', and 'and' in the Insincere subset" width="1000"/>
