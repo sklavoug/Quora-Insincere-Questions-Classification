@@ -74,7 +74,7 @@ Notably, a term-frequency times inverse document-frequency (tfidf) transformer w
 Within the MNB cross-validation, some interesting trends emerged. Table 3 shows that the highest- scoring iterations used a max_df near the max (either 0.75 or 1), consistently did not use lowercase, and had a relatively high alpha value (0.1 or 0.01), while the lowest-performing models had 0.5 max_df, used lowercase, and used the lowest alpha value (0.0001).
 
 #### Table 3: Hyperparameters and Resulting F1 Score for MNB Model
-| CountVectorizer | MNB |
+**CountVectorizer**                     **MNB**
 | Ngram | Max_feat | Max_df | Lowercase | Alpha | F1     |
 | :---- | -------: | -----: | --------: | ----: | -----: |
 | (1,1) | 50,000   | 0.75   | FALSE     | 0.1   | 0.556  |
